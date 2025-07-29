@@ -17,8 +17,10 @@ for page in range(1,51):
 
     for book in books:
         title=book.h3.a['title']
-        price=book.find('p',class_="price_color").text
-        available=book.find('p',class_="instock availability").text.strip()
+        price_tag=book.find('p',class_="price_color")
+        price=price_tag.text if price_tag else "N/A"
+        available_tag=book.find('p',class_="instock availability")
+        available=available_tag.text.strip() if available_tag else "N/A"
         titles.append(title)
         prices.append(price)
         availability.append(available)
